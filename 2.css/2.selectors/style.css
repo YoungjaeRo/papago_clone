@@ -1,0 +1,18 @@
+* {
+  /* font - family : 폰트 설정용 옵션션 */
+  font-family: 'Roboto', 'sans-serif';
+}
+
+p {
+  color : red;
+}
+
+
+.class-selector {
+  color: blue;
+}
+
+#id-selector {
+  color: aqua;
+  font-size: 35px;
+}

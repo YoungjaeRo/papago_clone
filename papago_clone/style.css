@@ -1,0 +1,443 @@
+* {
+  /* 박스 사이즈를 패딩 마진 포함해서 계산하겠다 + 폰트 */
+  box-sizing: border-box;
+  font-family: "SUIT Variable", sans-serif;
+}
+
+body {
+  /* 기본 여백 없애겠다 */
+  margin: 0px;
+  padding: 0px;
+}
+
+ul {
+  /* 앞으로 있을 모든 리스트 앞에 점과 여백 없애겠다 */
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+header {
+  /* 헤더 영역 콘테이너 (로고 메뉴 + 프로필) => 플렉스 속성*/
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 25px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.header-ul {
+  /* 세로로 있던 놈들 가로로 배치해주세요.
+  그리고 아이템끼리의 여백은 10px이 좋겠네요! */
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-ul li {
+  /* 폰트크기는 15px, 굵기 500, 색상 #3a3a3a 으로 해주세요! */
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  color: #3a3a3a;
+  cursor: pointer;
+}
+
+#logo {
+  /* 어이쿠야 가로로 10px만 늘려줄까요~? */
+  margin-right: 10px;
+}
+
+#vertical-line {
+  /* 헤더 메뉴 사이에 있는 가로선이에요
+  폰트 사이즈는 12px, 색상은 #cacaca가 좋겠네요 */
+  font-size: 12px;
+  color: #cacaca;
+}
+
+.header-ul li a {
+  /* 각각 헤더 메뉴 항목에 들어있는 텍스트들 -> 중앙 정렬을 해주어야해요. 어떻게하지?!*/
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#name {
+  /* 내 프로필 속 이름
+    폰트 사이즈 15px, 굵기 500, 색상 #1b1b1b */
+  font-size: 15px;
+  font-weight: 500;
+  color: #1b1b1b;
+}
+
+#profile-img {
+  /* 내 프로필 사진! => 여기서 집중할 것은 border-radius! 100%이기 때문에 부모의 값을 상속받아서 아주아주 커졌다 => 라운딩이 커지면 그냥 원이됨*/
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  object-fit: cover;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+section {
+  /* 헤더와 푸터 사이 가운데 섹션
+    너비는 부모(최상위 body)를 상속받아야해요.
+    패딩은 상하 70px, 좌우 0px
+    그리고 이 안에 들어갈 파파고의 메인 박스는 정중앙에 위치시키고 싶어요! */
+  width: 100%;
+  padding: 70px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.papago-container {
+  /* 콘테이너의 사이즈는 기본 70%로 할래요.
+    70% => 부모의 값 상속받음 => 부모는 바로 위에 있는 섹션 => 섹션도 부모를 상속받음 => 결국 body 태그로부터 기인함
+    그런데 body는 브라우저 크기에 의해 바뀔 수 있어요.
+    저는 아무리 작아도 800px보다는 크게 할래요ㅎㅎ
+    높이는 350px로 부탁해요 */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  width: 70%;
+  min-width: 800px;
+  height: 350px;
+}
+
+.papago-box {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  overflow: hidden;
+}
+
+.papago-header {
+  /* 문장 적는 칸 위 언어 선택하는 헤더
+    그럼 너비는 당연히 부모를 상속받은 100%여야겠죠?
+    높이는 58px로 해주세요.
+    내부에는 '한국어'와 캐럿 버튼이 들어갈 예정이에요. 각각의 요소는 양 끝에 위치시켜주세요. 
+    내부 여백은 상하 0px, 좌우 23px이 좋겠어요.*/
+  border-bottom: 0.5px solid rgb(233, 233, 233);
+  width: 100%;
+  height: 58px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 23px;
+}
+
+.papago-header span {
+  /* 파파고 헤더 안 텍스트들
+    폰트 사이즈는 18px, 굵기는 500, 색상은 #474747으로 해주세요. */
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 18px;
+  font-weight: 500;
+  color: #474747;
+}
+
+.papago-header button {
+  /* 캐럿 아이콘(등호?)이 담긴 버튼이에요
+    아이콘 크기는 16px에 굵기 600, 색상 #474747으로 부탁해요.
+    대신 버튼 배경과 테두리는 'none'으로 해주시고
+    내부 여백은 0px로 없애주세요! */
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 16px;
+  font-weight: 600;
+  color: #474747;
+  background: none;
+  border: none;
+  padding: 0px;
+}
+
+.papago-header span:hover,
+.papago-header button:hover {
+  /* 마우스 호버 이벤트 : 마우스를 올렸을 때 속성 값을 변경할 수 있다. */
+  color: #21dc6d;
+}
+
+.papago-textarea {
+  /* 문장을 입력하는 textarea를 감싸는 div!
+    너비는 100%, 높이는 65.5%로 해주세요.
+    그리고 안에 글자수를 표시해주는 문자가 고정 위치로 있어야해요! 그럼 얘는 고정위치의 기준이 되는 박스가 되겠네요~*/
+  width: 100%;
+  height: 65.5%;
+  position: relative;
+}
+
+.papago-textarea textarea {
+  /* 너비와 높이는 textarea를 감싸는 div의 크기만큼 꽉차게 해주세요.
+    그런데 테두리가 없으면 좋겠고, 내부 여백은 상하좌우 15px로 해주세요.
+    폰트 사이즈는 18px, 컬러는 #1b1b1b, 굵기는 600으로 해주세요! */
+  outline: none;
+  resize: none;
+  font-family: "SUIT Variable", sans-serif;
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 15px;
+  font-size: 18px;
+  color: #1b1b1b;
+  font-weight: 600;
+}
+
+.papago-textarea span {
+  /* 현재 입력한 글자수예요.
+    위치는 부모 div를 기준으로 고정이고, 아래로부터 10px 오른쪽으로브터 10px이면 좋겠네요!
+    폰트 사이즈는 13px에 색상 #474747로해주세요~ */
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 13px;
+  color: #474747;
+}
+
+.papago-footer {
+  /* 파파고 박스에 있는 푸터, 즉 버튼들이 모여있는 곳이에요. 저기 소리버튼 문서버튼 번역하기 버튼 보이죠?
+    파파고 박스 푸터는 우선 가로로 배치된 레이아웃이 좋겠네요.
+    더불어서 제가 원하는 만큼씩 잘라서 양 옆으로 쭉 빼버릴거예요.
+    그리고 푸터 구분을 위해서 상단 테두리에 "0.5px solid rgb(233, 233, 233)" 값을 주는게 좋겠네요. */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 0.5px solid rgb(233, 233, 233);
+}
+
+.papago-footer ul {
+  /* 제가 원하는 첫 번째 묶음이에요.
+    이 태그의 자식 태그들 역시 가로로 배치된 레이아웃이 좋겠어요.
+    교차축이 중앙에 배치되었으면 좋겠습니다~ */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.papago-footer ul li {
+  /* 아이콘 하나하나를 감쌀거예요.
+    너비는 84px, 높이는 62px로 해주세요.
+    아이콘이 이 요소 정중앙에 위치한 레이아웃이면 좋겠어요.
+    그리고 우측 테두리가 조금 있으면 좋을 것 같으니, "0.5px solid rgb(233, 233, 233)"를 주는게 좋겠네요. */
+  cursor: pointer;
+  width: 84px;
+  height: 62px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 0.5px solid rgb(233, 233, 233);
+}
+
+.papago-footer ul li img {
+  /* 높이가 너비 크기에 따라 자동으로 맞춰진다 */
+  width: 35%;
+  height: auto;
+}
+
+.papago-footer button {
+  /* 번역하기 버튼이네요.
+    버튼에는 테두리가 없으면 좋겠어요.
+    버튼 배경색은 #21dc6d, 내부 텍스트 크기는 16px, 굵기는 700, 색상은 white가 좋겠네요.
+    내부 여백은 상하 0px, 좌우 25px로 해주세요. */
+  cursor: pointer;
+  border: none;
+  background-color: #21dc6d;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  padding: 0px 25px;
+}
+
+/* >>여기부터 과제<<
+  어려우면 연락해요
+  친절한 디자이너 상시 대기중 */
+
+footer {
+  /* 마지막 페이지의 푸터네요.
+    푸터의 너비는 body를 상속받은 100%였음 좋겠어요.
+    그리고 푸터 내부에 크게 두 줄로 이루어져있으니, 세로로 배치된 레이아웃이 좋겠네요.
+    배경색은 조금 진한 #fbfbfb로 부탁드려요~ */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fbfbfb;
+}
+
+#footer-first {
+  /* 푸터 내부의 첫 줄이네요.
+    이 요소의 너비는 푸터의 너비를 100%로 상속받았으면 좋겠어요.
+    그리고 내부 여백이 상하 30px, 좌우 60px이면 좋겠네요.
+    그리고... 잘 안보이지만 테두리가 얇게 있으니 하단에만 테두리를 "0.5px solid rgb(231, 231, 231)" 만큼 줄까요? */
+  width: 100%;
+  padding: 30px 60px;
+  border-bottom: 0.5px solid rgb(231, 231, 231);
+}
+
+#footer-first ul,
+#footer-first ul li,
+#footer-first ul li span:nth-child(1) {
+  /* 아래에서 공통으로 사용하는 속성을 따로 빼두었어요.
+    푸터는 전부 row 의 형태로 이루어져있고, 교차축이 중앙에 맞춰진 형태랍니다. */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#footer-first ul {
+  /* 푸터 내부 첫 줄 속 콘텐츠네요.
+    말이 어렵지, 그냥 버튼과 글과 아이콘들을 감싸는 녀석입니다.
+    그런데 레이아웃이 보니까.. 두개의 자식 태그를 갖고있네요?
+    두개의 자식 태그의 메인 축이 양 끝에 있으면 좋겠는데요? */
+  justify-content: space-between;
+}
+
+#footer-first ul li {
+  /* 첫 줄 콘텐츠 속 각각의 아이템들이에요.
+    이녀석들은 보니까~  사이가 10px만큼 멀어지는게 좋겠네요!
+    음.. 이녀석의 레이아웃이 display 였던가? display 안에서 아이템들의 간격을 주는 속성이...*/
+  gap: 10px;
+}
+
+#footer-first ul li span:nth-child(1) {
+  /* nth-child란 몇 번째 자식인지를 의미해요.
+    이 태그의 경우에는 첫 번째 자식이겠네요!
+    화면에서 new 를 의미합니다.
+    폰트 사이즈는 12px, 굵기는 700, 배경색은 #1caafc, 폰트색은 white가 좋겠네요!
+    내부 여백은 (상 3px 우 7px 하 4.5px 좌 7px) 이 좋겠어요!
+    그리고 둥근 텍스트인 만큼, 라운딩이 500px 만큼 들어가면 좋겠어요! */
+  font-size: 12px;
+  font-weight: 700;
+  background-color: #1caafc;
+  color: white;
+  padding: 3px 7px 4.5px 7px;
+  border-radius: 500px;
+}
+
+#footer-first ul li span:nth-child(2) {
+  /* 두 번째 자식이네요! new 옆에 있는 텍스트를 의미해요.
+    폰트 사이즈는 13px, 굵기는 600, 색상은 #474747, 내부 여백은 하단만 1.5px이 좋겠어요! */
+  font-size: 13px;
+  font-weight: 600;
+  color: #474747;
+  padding-bottom: 1.5px;
+}
+
+#footer-first ul li img:nth-child(1) {
+  /* 이번엔 첫 번재 이미지 자식이네요.
+    이미지의 높이는 16px로 하고, 너비는 높이에 맞게 자동으로 맞춰주세요!
+    기억이 안난다면 ctrl(command)+f 누른 후 'auto'를 검색해볼까요? */
+  height: 16px;
+  width: auto;
+}
+
+#footer-first ul li img:nth-child(2) {
+  /* 두 번째 이미지 자식이에요.
+    높이는 20px, 너비는 자동으로 맞춰줄게요. */
+  height: 20px;
+  width: auto;
+}
+
+#footer-second {
+  /* 마지막 푸터의 두 번째 줄이에요.
+    너비는 부모를 상속받은 100%, 레이아웃은 내부적으로 또 두 줄로 나눌 수 있을 것 같으니 세로로 배치해볼까요?
+    내부 여백은 (상 30px 우 60px 하 50px 좌 60px)로 구성해주세요.
+    아이템 사이의 여백은 20px입니다. */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 60px 50px 60px;
+  gap: 30px;
+}
+
+#footer-second ul:nth-child(1) {
+  /* 말이 어렵지만 앱 다운로드 버튼이 있는 줄이에요!
+    너비는 상속받은 100%로 하고, 레이아웃 배치는 가로로 하되 메인축은 각각 옆으로 찢어진 형태, 교차축은 중앙으로 맞춰주세요! */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#footer-second ul:nth-child(1) li:not(#language-box) {
+  /* not은 not 내부 선택자만 제외하겠다는 뜻이에요. */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #474747;
+}
+
+#app-icon {
+  /* 파파고 어플의 로고가 박힌 하얀색 버튼이에요. */
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+#app-icon img {
+  width: 80%;
+  height: auto;
+}
+
+#language-box {
+  font-size: 13px;
+  font-weight: 700;
+  background-color: #adadad;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 500px;
+}
+
+#footer-second ul:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #474747;
+}
+
+#footer-second ul:nth-child(2) li {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+#footer-second ul:nth-child(2) li span {
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+#footer-second ul:nth-child(2) li span:hover {
+  color: #1b1b1b;
+  font-weight: 600;
+}
+
+#cc {
+  font-size: 12px;
+  font-weight: 900;
+  color: #adadad;
+}
+
+@media (min-height: 800px) {
+  footer {
+    position: absolute;
+    bottom: 0px;
+  }
+}
